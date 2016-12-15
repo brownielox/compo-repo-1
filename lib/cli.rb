@@ -1,5 +1,4 @@
-require_relative "../compo-repo/scraper.rb"
-require_relative "../compo-repo/location.rb"
+require_relative "../lib/location.rb"
 require 'nokogiri'
 require 'colorize'
 require 'open-uri'
@@ -9,16 +8,9 @@ class CommandLineInteface
   BASE_PATH = "https://www.grownyc.org/compost/locations"
 
 
-   puts "Where would you like to compost?"
-   gets.strip.chomp
-
-   page_arr = Scraper.new.scrape_webpage(BASE_PATH)
-
-end
-
   def self.scrape_webpage(index_url)
 
-    doc = Nokogiri::HTML(open(index_url))
+    doc = Nokogiri::HTML(open("https://www.grownyc.org/compost/locations"))
 
     location_array = []
 
@@ -39,6 +31,17 @@ end
         }
       end
     location_array
-    end
+  end
 
-puts page_arr
+  def chat
+
+   puts "Where would you like to compost?"
+   gets.strip.chomp
+
+   page_arr = self.new.scrape_webpage(BASE_PATH)
+
+  end
+  # puts page_arr
+end
+
+chat
