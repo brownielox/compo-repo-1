@@ -20,21 +20,22 @@ class CommandLineInteface
 
     location_hash = []
 
-    doc.css(".odd").each do |locale|
+    # doc.css(".odd").each do |locale|
 
       location_hash << {
 
-          name: locale.css(".odd:nth-child(0)").text,
+          name: doc.css(".odd td:eq(0)").text,
 
-          # address: locale.css(".odd:nth-child(1)").text,
+          address: doc.css(".odd td:eq(1)").text,
 
-          # day: locale.css(".odd:nth-child(2)").text,
+          day: doc.css(".odd td:eq(2)").text,
 
-          # hours: locale.css(".odd:nth-child(3)").text,
+          hours: doc.css(".odd td:eq(3)").text,
 
-          # borough: locale.css(".odd:nth-child(4)").text,
+          borough: doc.css(".odd td:eq(4)").text,
 
         }
-      end
-    puts location_array[1]
+
+      # end
+      puts location_hash[0]
 end
