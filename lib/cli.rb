@@ -7,35 +7,30 @@ require 'pry'
 class CommandLineInteface
   BASE_PATH = "https://www.grownyc.org/compost/locations"
 
-
-   puts "Where would you like to compost?"
-   gets.strip.chomp
-
-   # page_arr = self.new.scrape_webpage(BASE_PATH)
-
-  # puts page_arr
- 
+   puts "Hello! Please enter the borough in which you'd like to compost, or the day of the week you'd like to compost."
+   input = gets.chomp
 
     doc = Nokogiri::HTML(open(BASE_PATH))
 
-    location_hash = []
+    locations_array = []
 
-    # doc.css(".odd").each do |locale|
+    temp = "
+			"
+ 
+    doc.css(".odd").each do |locale|
 
-      location_hash << {
+    	borough = locale.css("td")[0].text.to_s
 
-          name: doc.css(".odd td:eq(0)").text,
+        name = locale.css("td")[1].text.to_s.split(temp)[0]
 
-          address: doc.css(".odd td:eq(1)").text,
+        address = locale.css("td")[1].text.to_s.split(temp)[1]
 
-          day: doc.css(".odd td:eq(2)").text,
+        days = locale.css("td")[2].text.to_s.delete(temp)
 
-          hours: doc.css(".odd td:eq(3)").text,
+        hours = locale.css("td")[3].text.to_s.delete(temp)
 
-          borough: doc.css(".odd td:eq(4)").text,
+        locations_array << Location.new(borough, name, days, hours, address)
 
-        }
+    end
 
-      # end
-      puts location_hash[0]
 end

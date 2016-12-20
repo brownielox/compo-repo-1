@@ -1,15 +1,19 @@
-class CompostLocation
-  attr_accessor :name, :address, :hours, :day, :borough
+class Location
+  attr_accessor :name, :address, :hours, :days, :borough
 
   @@all = []
 
-    def initialize(location_info)
-      @name = location_info[:name]
-      @address = location_info[:location]
-      @day = location_info[:day]
-      @hours = location_info[:profile_url]
-      @borough = location_info[:borough]
+    def initialize(borough=nil, name=nil, days=nil, hours=nil, address=nil)
+      @borough = borough
+      @name = name
+      @days = days
+      @hours = hours
+      @address = address
       @@all << self
     end
+
+  def showall
+    @@all
+  end
 
 end
