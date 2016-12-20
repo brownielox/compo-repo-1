@@ -16,4 +16,22 @@ class Location
     @@all
   end
 
+  def borough_info
+    puts "------------+------------"
+    puts @borough
+    puts @name
+    puts @address
+    puts @days
+    puts @hours
+  end
+
+  def days_hours_info
+    puts "------------+------------"
+    puts @borough
+    puts @name
+    puts @address
+    puts @days
+    puts @hours
+  end
+
 end

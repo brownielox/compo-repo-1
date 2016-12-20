@@ -33,4 +33,17 @@ class CommandLineInteface
 
     end
 
+        locations_array.each do |locale|
+
+		 if input == locale.borough
+	 		locale.borough_info
+
+		 elsif input + "s" == locale.days
+	 		locale.days_hours_info.strip
+
+	 	elsif input == locale.hours
+	 		locale.days_hours_info.strip
+		 end
+  	 end
+
 end
