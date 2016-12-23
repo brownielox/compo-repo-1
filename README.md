@@ -1,1 +1,0 @@
-# compo-repo-1
