@@ -6,13 +6,13 @@ class Location
     def initialize(borough=nil, name=nil, days=nil, hours=nil, address=nil)
       @borough = borough
       @name = name
-      @days = days
+      @days = days + " "
       @hours = hours
       @address = address
       @@all << self
     end
 
-  def showall
+  def all
     @@all
   end
 

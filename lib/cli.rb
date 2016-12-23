@@ -7,7 +7,7 @@ require 'pry'
 class CommandLineInteface
   BASE_PATH = "https://www.grownyc.org/compost/locations"
 
-   puts "Hello! Please enter the borough in which you'd like to compost, or the day of the week you'd like to compost. You can also type 'all' to see all locations."
+   puts "Hello! Please enter the borough in which you'd like to drop off your compost, or the day of the week you'd like to compost. You can also type 'all' to see all locations."
    input = gets.chomp
 
     doc = Nokogiri::HTML(open(BASE_PATH))
@@ -19,7 +19,7 @@ class CommandLineInteface
  
     doc.css(".odd").each do |locale|
 
-    	borough = locale.css("td")[0].text.to_s
+    	  borough = locale.css("td")[0].text.to_s
 
         name = locale.css("td")[1].text.to_s.split(temp)[0]
 
@@ -35,18 +35,18 @@ class CommandLineInteface
 
         locations_array.each do |locale|
 
-		 if input == locale.borough
-	 		locale.borough_info
+    		 if input.downcase == locale.borough.downcase
+    	 		locale.borough_info
 
-		 elsif input + "s" == locale.days
-	 		locale.days_hours_info.strip
+    		 elsif input.downcase == locale.days.downcase || input.downcase + "s" == locale.days.downcase
+    	 		locale.days_hours_info
 
-	 	elsif input == locale.hours
-	 		locale.days_hours_info.strip
+    	 	elsif input == locale.hours
+    	 		locale.days_hours_info
 
-    elsif input == "all"
-      puts locale.showall
-		 end
+        elsif input == "all"
+          locale.days_hours_info
+    		 end
   	 end
 
 end
