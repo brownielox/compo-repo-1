@@ -7,7 +7,7 @@ require 'pry'
 class CommandLineInteface
   BASE_PATH = "https://www.grownyc.org/compost/locations"
 
-   puts "Hello! Please enter the borough in which you'd like to compost, or the day of the week you'd like to compost."
+   puts "Hello! Please enter the borough in which you'd like to compost, or the day of the week you'd like to compost. You can also type 'all' to see all locations."
    input = gets.chomp
 
     doc = Nokogiri::HTML(open(BASE_PATH))
@@ -43,6 +43,9 @@ class CommandLineInteface
 
 	 	elsif input == locale.hours
 	 		locale.days_hours_info.strip
+
+    elsif input == "all"
+      puts locale.showall
 		 end
   	 end
 
