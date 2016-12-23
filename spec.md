@@ -1,6 +1,6 @@
 # Specifications for the CLI Assessment
 
 Specs:
-- [x] Have a CLI for interfacing with the application
-- [x] Pull data from an external source
+- [x] Have a CLI for interfacing with the application - CLI asks user for borough or day of the week they'd like to research. It also offers a list of all locations. 
+- [x] Pull data from an external source - pulls data from https://www.grownyc.org/compost/locations
 - [ ] Implement both list and detail views
